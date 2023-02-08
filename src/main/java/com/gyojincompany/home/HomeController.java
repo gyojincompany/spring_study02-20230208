@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -60,5 +61,24 @@ public class HomeController {
 		return "free/content";
 	}
 	
+	@RequestMapping(value = "/member")
+	public String member(Model model) {
+		
+		model.addAttribute("mid", "tiger");
+		model.addAttribute("mname", "홍길동");
+		
+		return "member";
+	}
+	
+	@RequestMapping(value = "/member2")
+	public ModelAndView member2() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("mid", "tiger");
+		mv.addObject("mname", "홍길동");
+		mv.setViewName("member");
+		
+		return mv;
+	}
 	
 }
